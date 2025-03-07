@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   ScrollView,
@@ -15,6 +15,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import remoteConfig from '@react-native-firebase/remote-config';
 
 import {
   Colors,
@@ -71,6 +72,27 @@ function App(): React.JSX.Element {
    * https://github.com/react-native-community/discussions-and-proposals/discussions/827
    */
   const safePadding = '5%';
+
+  const fetchData = async () => {
+    try {
+      await remoteConfig().setConfigSettings({
+        minimumFetchIntervalMillis: 3600000, // минимальный интервал между запросами
+      });
+      await remoteConfig().fetch();
+      await remoteConfig().activate();
+
+      const welcomeMessage = remoteConfig().getValue('json_data').asString();
+      console.log(welcomeMessage);
+
+    } catch (error) {
+      console.error('Error fetching Remote Config: ', error);
+    }
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, []);
+
 
   return (
     <View style={backgroundStyle}>
