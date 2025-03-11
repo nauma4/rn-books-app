@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import {StyleSheet, View} from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
-import COLORS from '../../helpers/colors';
+import COLORS from '@helpers/colors';
 
 export interface LoadingLinePropTypes {
   progress: number;

@@ -1,41 +1,49 @@
-import React from 'react';
-import {Dimensions, StyleSheet, View, Image, Text} from 'react-native';
+import React, {ReactNode} from 'react';
+import {
+  Dimensions,
+  StyleSheet,
+  View,
+  Image,
+  TouchableOpacity,
+  GestureResponderEvent,
+} from 'react-native';
 import Carousel, {
   ICarouselInstance,
   Pagination,
 } from 'react-native-reanimated-carousel';
-import {useStore} from '../../../../store/Hook';
-import {BookBannerItemType} from '../../../../store/Context';
 import {useSharedValue} from 'react-native-reanimated';
-import COLORS from '../../../../helpers/colors';
+
+import {BookBannerItemType} from '@store/Context';
+import COLORS from '@helpers/colors';
+
 const {width} = Dimensions.get('window');
 
-export const BannerContainer = () => {
-  const {top_banner_slides} = useStore();
+export interface BannerContainerPropTypes {
+  data: Array<BookBannerItemType>;
+  onClick: (id: number) => (event: GestureResponderEvent) => void | undefined;
+}
+
+export const BannerContainer: React.FC<BannerContainerPropTypes> = ({
+  data,
+  onClick = () => {},
+}): ReactNode => {
   const ref = React.useRef<ICarouselInstance>(null);
   const progress = useSharedValue<number>(0);
 
-  console.log(top_banner_slides);
-
-  const renderItem = ({item}) => {
-    console.log();
+  const renderItem = ({item}: {item: BookBannerItemType}) => {
     return (
-      <View style={styles.slide}>
+      <TouchableOpacity style={styles.slide} onPress={onClick(item.book_id)}>
         <Image
           resizeMode="cover"
           style={styles.image}
           source={{uri: item.cover}}
         />
-      </View>
+      </TouchableOpacity>
     );
   };
 
   const onPressPagination = (index: number) => {
     ref.current?.scrollTo({
-      /**
-       * Calculate the difference between the current index and the target index
-       * to ensure that the carousel scrolls to the nearest index
-       */
       count: index - progress.value,
       animated: true,
     });
@@ -51,13 +59,13 @@ export const BannerContainer = () => {
         snapEnabled={true}
         pagingEnabled={true}
         autoPlayInterval={2000}
-        data={top_banner_slides}
+        data={data}
         renderItem={renderItem}
         onProgressChange={progress}
       />
       <Pagination.Basic
         progress={progress}
-        data={top_banner_slides}
+        data={data}
         size={7}
         dotStyle={styles.paginationDot}
         activeDotStyle={styles.paginationActiveDot}
@@ -68,6 +76,7 @@ export const BannerContainer = () => {
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     marginTop: 60,
