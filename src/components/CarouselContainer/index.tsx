@@ -1,11 +1,17 @@
 import React from 'react';
-import {Dimensions, StyleSheet, View, Image, Text, TouchableOpacity, TextStyle} from 'react-native';
-import Carousel, {
-  ICarouselInstance,
-} from 'react-native-reanimated-carousel';
+import {
+  Dimensions,
+  StyleSheet,
+  View,
+  Image,
+  Text,
+  TouchableOpacity,
+  TextStyle,
+  GestureResponderEvent,
+} from 'react-native';
+import Carousel, {ICarouselInstance} from 'react-native-reanimated-carousel';
 
-import { BookItemType } from '@store/Context';
-import {useStore} from '@store/Hook';
+import {BookItemType} from '@store/Context';
 import COLORS from '@helpers/colors';
 
 const {width} = Dimensions.get('window');
@@ -14,30 +20,33 @@ export interface CarouselContainerPropTypes {
   title: string;
   titleStyle?: TextStyle;
   data: Array<BookItemType>;
+  onClick: (id: number) => (event: GestureResponderEvent) => void | undefined;
 }
 
-export const CarouselContainer: React.FC<CarouselContainerPropTypes> = ({ title, titleStyle, data }) => {
-  const {books} = useStore();
-
+export const CarouselContainer: React.FC<CarouselContainerPropTypes> = ({
+  title,
+  titleStyle,
+  data,
+  onClick = () => {},
+}) => {
   const ref = React.useRef<ICarouselInstance>(null);
 
   const renderItem = ({item}: {item: BookItemType}) => {
     return (
-        <TouchableOpacity style={styles.slide}>
-          <Image
-            resizeMode="cover"
-            style={styles.image}
-            source={{uri: item.cover_url}}
-          />
-          <Text style={styles.slideTitle}>{item.name}</Text>
-        </TouchableOpacity>
+      <TouchableOpacity style={styles.slide} onPress={onClick(item.id)}>
+        <Image
+          resizeMode="cover"
+          style={styles.image}
+          source={{uri: item.cover_url}}
+        />
+        <Text style={styles.slideTitle}>{item.name}</Text>
+      </TouchableOpacity>
     );
   };
 
-
   return (
     <View style={styles.container}>
-      {!!title && (<Text style={[styles.title, titleStyle]}>{title}</Text>)}
+      {!!title && <Text style={[styles.title, titleStyle]}>{title}</Text>}
       <Carousel
         ref={ref}
         width={width / 3}
@@ -70,7 +79,7 @@ const styles = StyleSheet.create({
     width: 120,
     height: 150,
     marginRight: 8,
-    gap: 8
+    gap: 8,
   },
   slideTitle: {
     color: COLORS.white,

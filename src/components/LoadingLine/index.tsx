@@ -1,6 +1,10 @@
-import React, { ReactNode } from 'react';
+import React, {ReactNode} from 'react';
 import {StyleSheet, View} from 'react-native';
-import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+} from 'react-native-reanimated';
 
 import COLORS from '@helpers/colors';
 
@@ -16,7 +20,7 @@ const LoadingLine: React.FC<LoadingLinePropTypes> = ({
   const progressValue = useSharedValue(0);
 
   React.useEffect(() => {
-    progressValue.value = withTiming(progress, { duration });
+    progressValue.value = withTiming(progress, {duration});
   }, [progress, duration]);
 
   const animatedStyle = useAnimatedStyle(() => ({
@@ -29,7 +33,7 @@ const LoadingLine: React.FC<LoadingLinePropTypes> = ({
       <Animated.View style={[styles.progressLine, animatedStyle]} />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

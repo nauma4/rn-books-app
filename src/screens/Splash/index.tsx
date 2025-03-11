@@ -14,6 +14,8 @@ export const SplashScreen: React.FC = ({
 }): ReactNode => {
   const TIMEOUT_DELAY: number = 2000;
   const {onSetData} = useStore();
+  const controller = new AbortController();
+  const signal = controller.signal;
 
   const fetchData = React.useCallback(async () => {
     try {
@@ -27,7 +29,11 @@ export const SplashScreen: React.FC = ({
       const result: BooksAppState = JSON.parse(jsonData) as BooksAppState;
       onSetData(result);
     } catch (error) {
-      Alert.alert('Fetch data failed', 'Error fetching Remote Config: ' + error);
+      Alert.alert(
+        'Fetch data failed',
+        'Error fetching Remote Config: ' + error,
+      );
+      controller.abort();
     }
   }, [onSetData]);
 
@@ -35,7 +41,8 @@ export const SplashScreen: React.FC = ({
     fetchData();
 
     setTimeout(() => {
-      hideScreen()
+      if (signal.aborted) return;
+      hideScreen();
     }, TIMEOUT_DELAY);
   }, []);
 

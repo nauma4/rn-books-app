@@ -41,7 +41,7 @@ const AppContent: React.FC = (): ReactNode => {
           name="Single"
           component={SingleScreen}
           options={{
-            headerTransparent: true,
+            headerShown: false,
           }}
         />
       </Stack.Navigator>

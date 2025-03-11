@@ -13,9 +13,9 @@ export function MainScreen({}): React.JSX.Element {
     <SafeAreaView style={styles.screen}>
       <ScrollView>
         <BannerContainer data={top_banner_slides} onClick={handleClickItem} />
-        <CarouselContainer title={'New Arrivals'} data={books} />
-        <CarouselContainer title={'Romance'} data={books} />
-        <CarouselContainer title={'Top Romantic Comedy'} data={books} />
+        <CarouselContainer title={'New Arrivals'} data={books} onClick={handleClickItem} />
+        <CarouselContainer title={'Romance'} data={books} onClick={handleClickItem} />
+        <CarouselContainer title={'Top Romantic Comedy'} data={books} onClick={handleClickItem} />
       </ScrollView>
     </SafeAreaView>
   );
