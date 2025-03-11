@@ -17,7 +17,7 @@ const LoadingLine: React.FC<LoadingLinePropTypes> = ({
 
   React.useEffect(() => {
     progressValue.value = withTiming(progress, { duration });
-  }, [progress]);
+  }, [progress, duration]);
 
   const animatedStyle = useAnimatedStyle(() => ({
     width: `${progressValue.value}%`,

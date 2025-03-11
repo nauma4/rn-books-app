@@ -1700,6 +1700,28 @@ PODS:
     - Firebase/RemoteConfig (= 11.8.0)
     - React-Core
     - RNFBApp
+  - RNGestureHandler (2.24.0):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.11.18.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-FabricComponents
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
   - RNReanimated (3.17.1):
     - DoubleConversion
     - glog
@@ -1940,6 +1962,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBRemoteConfig (from `../node_modules/@react-native-firebase/remote-config`)"
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -2099,6 +2122,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/app"
   RNFBRemoteConfig:
     :path: "../node_modules/@react-native-firebase/remote-config"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -2188,6 +2213,7 @@ SPEC CHECKSUMS:
   ReactCommon: a30b578194de911fbe1698efb8247bfe4cb6abff
   RNFBApp: 5e27e8311042d41fa8350f1751ab42e042c39d52
   RNFBRemoteConfig: f0d3e1f41dbc3ee6e2378c53cb5e033d0bf2afbd
+  RNGestureHandler: f7b3a72c099e1e29b5b81688678bc9108d44057c
   RNReanimated: fe5c52894886953248a81a10b2a9b6eeb5398d61
   RNScreens: fc78b9b5a1274426d7a59b7d07c272bba13604fa
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
