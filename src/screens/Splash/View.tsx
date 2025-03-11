@@ -41,6 +41,8 @@ const styles = StyleSheet.create({
     fontSize: 52,
     fontWeight: 700,
     color: COLORS.pink,
+    fontFamily: 'Georgia',
+    fontStyle: 'italic'
   },
   subTitle: {
     fontSize: 24,
@@ -48,5 +50,7 @@ const styles = StyleSheet.create({
     color: COLORS.white,
     marginTop: 12,
     marginBottom: 50,
+    opacity: 0.8,
+    fontFamily: 'NunitoSans_Regular',
   }
 });

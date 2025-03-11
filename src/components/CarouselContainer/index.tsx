@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 700,
     marginLeft: 16,
+    fontFamily: 'NunitoSans_Regular',
   },
   carousel: {
     width: width - 16,
@@ -85,6 +86,7 @@ const styles = StyleSheet.create({
     color: COLORS.white,
     opacity: 0.3,
     fontSize: 16,
+    fontFamily: 'NunitoSans_Regular',
   },
   image: {
     width: '100%',

@@ -177,10 +177,12 @@ const styles = StyleSheet.create({
     color: COLORS.darkText,
     fontSize: 20,
     fontWeight: 700,
+    fontFamily: 'NunitoSans_Regular',
   },
   tabItemLabel: {
     fontSize: 12,
     color: COLORS.gray,
+    fontFamily: 'NunitoSans_Regular',
   },
   separation: {
     width: width - 32,
@@ -197,11 +199,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 700,
     marginBottom: 8,
+    fontFamily: 'NunitoSans_Regular',
   },
   descriptionText: {
     fontSize: 14,
     fontWeight: 600,
     color: COLORS.darkTextDescription,
+    fontFamily: 'NunitoSans_Regular',
   },
   otherBooksText: {
     color: COLORS.darkText,
@@ -238,10 +242,12 @@ const cStyles = StyleSheet.create({
     color: COLORS.white,
     marginTop: 16,
     marginBottom: 4,
+    fontFamily: 'NunitoSans_Regular',
   },
   slideAuthor: {
     fontSize: 14,
     color: COLORS.white,
     opacity: 0.8,
+    fontFamily: 'NunitoSans_Regular',
   },
 });
