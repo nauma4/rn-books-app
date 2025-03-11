@@ -58,6 +58,7 @@ export const BannerContainer: React.FC<BannerContainerPropTypes> = ({
         height={160}
         snapEnabled={true}
         pagingEnabled={true}
+        autoPlay={true}
         autoPlayInterval={2000}
         data={data}
         renderItem={renderItem}
